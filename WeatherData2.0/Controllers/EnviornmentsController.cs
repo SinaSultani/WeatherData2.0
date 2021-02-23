@@ -24,6 +24,7 @@ namespace WeatherData2._0.Controllers
         {
             ViewData["TempSortParm"] = sortOrder == "Temperature" ? "temp_desc" : "Temperature";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["HumiditySortParm"] = sortOrder == "Humidity" ? "humidity_desc" : "Humidity";
             ViewData["CurrentFilter"] = searchString;
 
             var temps = from t in _context.Enviornments
@@ -44,7 +45,13 @@ namespace WeatherData2._0.Controllers
                     case "date_desc":
                         temps = temps.OrderByDescending(t => t.Date);
                         break;
-                    default:
+                case "Humidity":
+                    temps = temps.OrderBy(t => t.Humidity);
+                    break;
+                case "humidity_desc":
+                    temps = temps.OrderByDescending(t => t.Humidity);
+                    break;
+                default:
                         temps = temps.OrderBy(t => t.Temperature);
                         break;
                 }

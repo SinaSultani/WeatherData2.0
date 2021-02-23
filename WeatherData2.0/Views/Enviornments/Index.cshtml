@@ -14,10 +14,8 @@
     <div class="form-actions no-color">
 
         <p>
-            Find by temp: <input type="text" temp="SearchString" value="@ViewData["CurrentFilter"]" />
-
+            Find by temp: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
             <input type="submit" value="Search" class="btn btn-default"/> |
-
             <a asp-action="Index"> Back to Full List</a>
         </p>
     </div>
@@ -28,13 +26,13 @@
         <tr>
             
             <th>
-                <a asp-action = "Index" asp-route-sortOrder = "@ViewData["DateSortParm "]"> @Html.DisplayNameFor(model => model.Date) </a>
+                <a asp-action = "Index" asp-route-sortOrder = "@ViewData["DateSortParm"]"> @Html.DisplayNameFor(model => model.Date) </a>
             </th>
             <th>
-                <a asp-action = "Index" asp-route-sortOrder = "@ViewData["TempSortParm "]"> @Html.DisplayNameFor(model => model.Temperature) </a>
+                <a asp-action = "Index" asp-route-sortOrder = "@ViewData["TempSortParm"]"> @Html.DisplayNameFor(model => model.Temperature) </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Humidity)
+                <a asp-action="Index" asp-route-sortOrder = "@ViewData["HumiditySortParm"]"> @Html.DisplayNameFor(model => model.Humidity) </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.InsideOrOutside)
