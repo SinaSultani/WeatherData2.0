@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WeatherData2._0.Models.Enviornment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index" method="get">
+
+    <div class="form-actions no-color">
+
+        <p>
+            Find by temp: <input type="text" temp="SearchString" value="@ViewData["CurrentFilter"]" />
+
+            <input type="submit" value="Search" class="btn btn-default"/> |
+
+            <a asp-action="Index"> Back to Full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+            @*<a href="C:\Users\sinas\source\repos\WeatherData2.0\WeatherData2.0\Views\Enviornments\Index.cshtml">C:\Users\sinas\source\repos\WeatherData2.0\WeatherData2.0\Views\Enviornments\Index.cshtml</a>*@
+        <tr>
+            
+            <th>
+                <a asp-action = "Index" asp-route-sortOrder = "@ViewData["DateSortParm "]"> @Html.DisplayNameFor(model => model.Date) </a>
+            </th>
+            <th>
+                <a asp-action = "Index" asp-route-sortOrder = "@ViewData["TempSortParm "]"> @Html.DisplayNameFor(model => model.Temperature) </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Humidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsideOrOutside)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Temperature)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Humidity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsideOrOutside)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
