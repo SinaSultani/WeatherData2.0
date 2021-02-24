@@ -20,15 +20,29 @@ namespace WeatherData2._0.Controllers
         }
 
         // GET: Enviornments
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string searchString2)
         {
             ViewData["TempSortParm"] = sortOrder == "Temperature" ? "temp_desc" : "Temperature";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["HumiditySortParm"] = sortOrder == "Humidity" ? "humidity_desc" : "Humidity";
+            ViewData["InsideOrOutsideSortParm"] = sortOrder == "InsideOrOutside" ? "insideoroutside_desc" : "InsideOrOutside";
             ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentFilter2"] = searchString2;
+            
 
             var temps = from t in _context.Enviornments
                         select t;
+            var i = "inside".ToLower();
+            var o = "outside".ToLower();
+
+            if (searchString2 == i)
+            {
+                temps = temps.Where(t => t.InsideOrOutside.Contains(i));
+            }
+            if (searchString2 == o)
+            {
+                temps = temps.Where(t => t.InsideOrOutside.Contains(o));
+            }
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -50,6 +64,12 @@ namespace WeatherData2._0.Controllers
                     break;
                 case "humidity_desc":
                     temps = temps.OrderByDescending(t => t.Humidity);
+                    break;
+                case "InsideOrOutside":
+                    temps = temps.OrderBy(t => t.InsideOrOutside);
+                    break;
+                case "insideoroutside_desc":
+                    temps = temps.OrderByDescending(t => t.InsideOrOutside);
                     break;
                 default:
                         temps = temps.OrderBy(t => t.Temperature);

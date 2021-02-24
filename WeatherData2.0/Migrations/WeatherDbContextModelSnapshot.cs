@@ -41,40 +41,6 @@ namespace WeatherData2._0.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Enviornments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Date = new DateTime(2021, 2, 23, 23, 11, 18, 109, DateTimeKind.Local).AddTicks(6813),
-                            Humidity = 60,
-                            InsideOrOutside = "Outside",
-                            Temperature = -3f
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateTime(2021, 2, 23, 23, 11, 18, 122, DateTimeKind.Local).AddTicks(498),
-                            Humidity = 20,
-                            InsideOrOutside = "Inside",
-                            Temperature = 25.2f
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(2021, 2, 23, 23, 11, 18, 122, DateTimeKind.Local).AddTicks(629),
-                            Humidity = 80,
-                            InsideOrOutside = "Outside",
-                            Temperature = 2f
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2021, 2, 23, 23, 11, 18, 122, DateTimeKind.Local).AddTicks(729),
-                            Humidity = 18,
-                            InsideOrOutside = "Inside",
-                            Temperature = 28.1f
-                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -7,6 +7,7 @@ namespace WeatherData2._0.Models
 {
     public class Enviornment
     {
+        
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public float Temperature { get; set; }
